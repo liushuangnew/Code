@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 插入排序
+    /**
+     *
+     * @param {*} arr
+     * 1、将数组分为有序队列和无序队列，每次把无序队列中的第一个值插入到有序队列的合适位置
+     * 2、有序队列初始化为数组的第一项
+     */
+    function insertSort(arr) {
+      console.log('插入排序之前的序列', arr)
+      if (!arr || arr.length < 2) {
+        return
+      }
+      for (let i = 0, len = arr.length; i < len; i++) {
+        let tmp = arr[i]
+        let j = i
+        for (; j >= 0; j--) {
+          if (tmp < arr[j - 1]) {
+            arr[j] = arr[j - 1]
+          } else {
+            break
+          }
+        }
+        arr[j] = tmp
+      }
+      console.log('插入排序之后的序列', arr)
+    }
+  </script>
+</body>
+
+</html>

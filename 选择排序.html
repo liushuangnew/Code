@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     *
+     * @param {*} arr
+     * 原理：数组中的每项和之后的每一项做对比
+     */
+    function selectSort(arr) {
+      console.log('选择排序之前的序列', arr)
+      if (!arr) return
+      for (let i = 0, len = arr.length; i < len - 1; i++) {
+        for (let j = i; j < len; j++) {
+          if (arr[i] > arr[j]) {
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+          }
+        }
+      }
+      console.log('选择排序之后的序列', arr)
+    }
+  </script>
+</body>
+
+</html>
