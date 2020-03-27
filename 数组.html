@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组</title>
+</head>
+
+<body>
+  <div> 主要元素</div>
+  <script>
+    var majorityElement = function (nums) {
+      let map = new Map()
+      let res = []
+      for (let i = 0; i < nums.length; i++) {
+        map.set(nums[i], map.get(nums[i]) + 1 || 1)
+      }
+      let max = Math.max(...map.values())
+      for (let key of map.keys()) {
+        console.log(key)
+        if (map.get(key) === max) {
+          res.push(key)
+        }
+      }
+      if (res.length === 1) {
+        return res.join('')
+      } else {
+        return -1
+      }
+    }
+    majorityElement([1, 2, 5, 9, 5, 9, 5, 5, 5])
+  </script>
+</body>
+
+</html>

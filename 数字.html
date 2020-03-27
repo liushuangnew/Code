@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>整数</title>
+</head>
+
+<body>
+  <div>1.整数反转</div>
+  <div>2.汉明距离</div>
+  <div>3.有多少小于当前数字的数字</div>
+  <div>4.将每个元素替换为右侧最大元素</div>
+  <div>5.罗马数字</div>
+  <div>6.将数字变成0的次数</div>
+  <div>7.猜数字
+    小A 和 小B 在玩猜数字。小B 每次从 1, 2, 3 中随机选择一个，
+    小A 每次也从 1, 2, 3 中选择一个猜。他们一共进行三次这个游戏，请返回 小A 猜对了几次
+  </div>
+  <div>8.打印从1到最大的n位数</div>
+  <div>9. 6 和 9 组成的最大数字</div>
+  <script>
+    let x = -321
+    let arr = [7, 7, 7, 7]
+    let s = 'IV'
+    reverse = function (x) {
+      let edage = Math.pow(2, 31)
+      let max = edage - 1
+      let min = -edage
+      let res = parseInt(Math.abs(x).toString().split('').reverse().join(''))
+      if (res > max || res < min) {
+        return 0
+      }
+      return x > 0 ? res : -res
+    }
+    smallerNumbersThanCurrent = function (nums) {
+      let numsNew = [...nums]
+      let res = []
+      numsNew.sort((a, b) => a - b)
+      for (let i = 0; i < nums.length; i++) {
+        res.push(numsNew.indexOf(nums[i]))
+      }
+      console.log(res)
+      return res
+    }
+
+    replaceElements = function (arr) {
+      let max = -1
+      let res = []
+      for (let i = arr.length - 1; i >= 0; i--) {
+        res[i] = max
+        max = arr[i] > max ? arr[i] : max
+      }
+      return res
+    }
+    var romanToInt = function (s) {
+      var obj = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+      }
+      if (s.length < 2) {
+        return obj[s[s.length - 1]]
+      }
+      let num = obj[s[s.length - 1]]
+      for (let i = s.length - 2; i >= 0; i--) {
+        if (s[i] === 'I' && (s[i + 1] === 'V' || s[i + 1] === 'X')) {
+          num = num - 1
+          continue
+        }
+        if (s[i] === 'X' && (s[i + 1] === 'L' || s[i + 1] === 'C')) {
+          num = num - 10
+          continue
+        }
+        if (s[i] === 'C' && (s[i + 1] === 'D' || s[i + 1] === 'M')) {
+          num = num - 100
+          continue
+        }
+        num = num + obj[s[i]]
+      }
+      return num
+    }
+    var numberOfSteps = function (num) {
+      let count = 0
+      while (num > 0) {
+        if (num % 2 === 0) {
+          num = num / 2
+        } else {
+          num--
+        }
+        count++
+      }
+      return count
+    }
+    game = function (guess, answer) {
+      return guess.filter((item, index) => {
+        return item === answer[index]
+      }).length
+    }
+    var printNumbers = function (n) {
+      var min = 1
+      var max = Math.pow(10, n)
+      var res = []
+      while (min < max) {
+        res.push(min)
+        min++
+      }
+      return res
+    }
+    printNumbers(3)
+    maximum69Number = function (num) {
+      var arr = String(num).split('')
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == '6') {
+          arr[i] = '9'
+          break
+        }
+      }
+      return parseInt(arr.join(''))
+    }
+    maximum69Number(9669)
+  </script>
+</body>
+
+</html>

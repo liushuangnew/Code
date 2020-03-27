@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>卡牌分组</div>
+  <div>有效的括号</div>
+  <div>删除最外层括号</div>
+  <div>删除字符串中的所有相邻重复项</div>
+  <div>比较含退格的字符串</div>
+  <div>棒球比赛</div>
+  <script>
+    // 卡牌分组
+    var hasGroupsSizeX = function (deck) {
+
+    }
+    // 有效的括号
+    var isValid = function (s) {
+      let len = s.length
+      let letter = ''
+      let arr = []
+      if (len % 2) {
+        return false
+      }
+      for (let i = 0; i < len; i++) {
+        letter = s[i]
+        switch (letter) {
+          case '(':
+          case '[':
+          case '{':
+            arr.push(letter)
+            break
+          case ')':
+            if (arr.pop() !== '(') {
+              return false
+            }
+            break
+          case ']':
+            if (arr.pop() !== '[') {
+              return false
+            }
+            break
+          case '}':
+            if (arr.pop() !== '{') {
+              return false
+            }
+            break
+        }
+      }
+      return !arr.length
+    }
+    console.log(isValid('()[]{}'))
+    // 删除最外层括号
+    var removeOuterParentheses = function (S) {
+      let arr = []
+      let count = 0
+      let k = 0
+      let res = []
+      for (let i = 0; i < S.length; i++) {
+        if (S[i] === '(') {
+          arr.push('(')
+          count++
+        } else {
+          arr.pop()
+          count--
+        }
+        if (count === 0) {
+          res.push(S.substring(k, i + 1))
+          k = i + 1
+        }
+      }
+      console.log(res)
+      return res.map(item => item.substring(1, item.length - 1)).join('')
+    }
+    removeOuterParentheses('(()())(())')
+    // 删除字符串中的所有相邻重复项
+    var removeDuplicates = function (S) {
+      let stack = []
+      let letter = ''
+      for (let i = 0; i < S.length; i++) {
+        if (stack.length && stack[stack.length - 1] === S[i]) {
+          stack.pop()
+        } else {
+          stack.push(S[i])
+        }
+      }
+      return stack.join('')
+    }
+    removeDuplicates('abbaca')
+    // 比较含退格的字符串
+    var backspaceCompare = function (S, T) {
+      let arr1 = []
+      let arr2 = []
+      for (let i = 0; i < S.length; i++) {
+        let letter = S[i]
+        if (letter === '#') {
+          arr1.pop()
+        } else {
+          arr1.push(letter)
+        }
+      }
+      for (let i = 0; i < T.length; i++) {
+        let letter = T[i]
+        if (letter === '#') {
+          arr2.pop()
+        } else {
+          arr2.push(letter)
+        }
+      }
+      return arr1.join('') === arr2.join('')
+    }
+    backspaceCompare('a#c', '#a#c')
+
+    var calPoints = function (ops) {
+      let stack = []
+      let score = ''
+      let count = 0
+      for (let i = 0; i < ops.length; i++) {
+        score = ops[i]
+        switch (score) {
+          case 'C':
+            stack.pop()
+            break;
+          case 'D':
+            if (stack.length > 0) {
+              stack.push(stack[stack.length - 1] * 2)
+            }
+            break
+          case '+':
+            if (stack.length > 1) {
+              stack.push(stack[stack.length - 1] + stack[stack.length - 2])
+            } else if (stack.length > 0 && stack.length < 2) {
+              stack.push(stack.push(stack[stack.length - 1]))
+            }
+            break
+          default:
+            stack.push(parseInt(score))
+        }
+      }
+      stack.forEach(item => count += item)
+      console.log(count, stack)
+      return count
+    }
+    calPoints(["D", "-2", "4", "C", "D", "9", "+", "+"])
+  </script>
+</body>
+
+</html>
