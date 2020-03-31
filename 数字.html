@@ -8,23 +8,23 @@
 </head>
 
 <body>
-  <div>1.整数反转</div>
-  <div>2.汉明距离</div>
-  <div>3.有多少小于当前数字的数字</div>
-  <div>4.将每个元素替换为右侧最大元素</div>
-  <div>5.罗马数字</div>
-  <div>6.将数字变成0的次数</div>
-  <div>7.猜数字
-    小A 和 小B 在玩猜数字。小B 每次从 1, 2, 3 中随机选择一个，
-    小A 每次也从 1, 2, 3 中选择一个猜。他们一共进行三次这个游戏，请返回 小A 猜对了几次
+  <div>整数反转</div>
+  <div>有多少小于当前数字的数字</div>
+  <div>将每个元素替换为右侧最大元素</div>
+  <div>罗马数字</div>
+  <div>将数字变成0的次数</div>
+  <div>猜数字
+    <p>小A 和 小B 在玩猜数字。小B 每次从 1, 2, 3 中随机选择一个</p>
+    <p>小A 每次也从 1, 2, 3 中选择一个猜。他们一共进行三次这个游戏，请返回 小A 猜对了几次</p>
   </div>
-  <div>8.打印从1到最大的n位数</div>
-  <div>9. 6 和 9 组成的最大数字</div>
+  <div>打印从1到最大的n位数</div>
+  <div>6 和 9 组成的最大数字</div>
   <script>
     let x = -321
     let arr = [7, 7, 7, 7]
     let s = 'IV'
-    reverse = function (x) {
+    // 整数反转
+    var reverse = function (x) {
       let edage = Math.pow(2, 31)
       let max = edage - 1
       let min = -edage
@@ -34,7 +34,8 @@
       }
       return x > 0 ? res : -res
     }
-    smallerNumbersThanCurrent = function (nums) {
+    // 有多少小于当前数字的数字
+    var smallerNumbersThanCurrent = function (nums) {
       let numsNew = [...nums]
       let res = []
       numsNew.sort((a, b) => a - b)
@@ -44,8 +45,8 @@
       console.log(res)
       return res
     }
-
-    replaceElements = function (arr) {
+    // 将每个元素替换为右侧最大元素
+    var replaceElements = function (arr) {
       let max = -1
       let res = []
       for (let i = arr.length - 1; i >= 0; i--) {
@@ -54,6 +55,7 @@
       }
       return res
     }
+    // 罗马数字
     var romanToInt = function (s) {
       var obj = {
         'I': 1,
@@ -85,6 +87,7 @@
       }
       return num
     }
+    // 将数字变成0的次数
     var numberOfSteps = function (num) {
       let count = 0
       while (num > 0) {
@@ -97,11 +100,13 @@
       }
       return count
     }
-    game = function (guess, answer) {
+    // 猜数字
+    var game = function (guess, answer) {
       return guess.filter((item, index) => {
         return item === answer[index]
       }).length
     }
+    // 打印从1到最大的n位数
     var printNumbers = function (n) {
       var min = 1
       var max = Math.pow(10, n)
@@ -113,7 +118,8 @@
       return res
     }
     printNumbers(3)
-    maximum69Number = function (num) {
+    // 6 和 9 组成的最大数字
+    var maximum69Number = function (num) {
       var arr = String(num).split('')
       for (let i = 0; i < arr.length; i++) {
         if (arr[i] == '6') {

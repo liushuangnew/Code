@@ -8,14 +8,12 @@
 </head>
 
 <body>
-  <a href="/index">空页面</a>
-  <div id="index">vfffffff</div>
   <div>回文字符串</div>
   <div>实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串</div>
   <div>分割平衡字符串</div>
   <script>
     let s = 'race a car'
-
+    // 回文字符串
     function isPalindrome(s) {
       if (s.length <= 0) {
         return true
@@ -24,7 +22,7 @@
       return filterStr.toLowerCase() === filterStr.split('').reverse().join('').toLowerCase() ? true : false
     }
     isPalindrome(s)
-
+    // 实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串
     var toLowerCase = function (str) {
       let res = ''
       let code = 0
@@ -35,6 +33,7 @@
       return res
     }
     toLowerCase('Hello')
+    // 分割平衡字符串
     var balancedStringSplit = function (s) {
       let arr = s.split('')
       let count = 0
