@@ -11,6 +11,7 @@
   <div>回文字符串</div>
   <div>实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串</div>
   <div>分割平衡字符串</div>
+  <div>最长公共前缀</div>
   <script>
     let s = 'race a car'
     // 回文字符串
@@ -49,6 +50,26 @@
         }
       }
       return count
+    }
+    // 最长公共前缀
+    function longestCommonPrefix(strs){
+      if(strs.length === 0){
+        return ''
+      }
+      let tmp = strs[0]
+      for(let i = 1; i<strs.length;i++){
+        let j = 0;
+        for(;j<tmp.length&& j<strs[i].length;j++) {
+          if(tmp[j] !== strs[i][j]){
+            break
+          }
+        }
+        tmp = tmp.substring(0, j)
+        if(tmp.length === 0){
+          return ''
+        }
+      }
+      return tmp
     }
   </script>
 </body>

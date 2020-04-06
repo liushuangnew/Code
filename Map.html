@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+</head>
+<body>
+  <div>两数之和</div>
+  <script>
+    let twoSum = (nums, target) => {
+      let map = new Map()
+      for(let i = 0; i<nums.length;i++) {
+        let num = target - nums[i]
+        if(map.has(num)){
+          return [map.get(num), i]
+        }
+        map.set(nums[i],i)
+      }
+    }
+    console.log(twoSum([5, 2, 11, 15, 7, 6], 9))
+    
+  </script>
+</body>
+</html>
