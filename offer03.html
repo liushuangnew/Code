@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h5>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</h5>
+  <script>
+    /*
+      function ListNode(x){
+        this.val = x;
+        this.next = null;
+      }
+    */
+    function printListFromTailToHead(head) {
+      var res = []
+      let temp = head
+      while(temp) {
+        res.push(temp.val)
+        temp = temp.next
+      }
+      return res.reverse()
+    }
+  </script>
+</body>
+
+</html>
