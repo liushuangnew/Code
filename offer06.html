@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h5>旋转数组的最小数字</h5>
+  <script>
+    function minNumberInRotateArray(rotateArray) {
+      // write code here
+      if (rotateArray.length <= 0) {
+        return 0
+      }
+      for (let i = 0; i < rotateArray.length; i++) {
+        if (rotateArray[i] > rotateArray[i + 1]) {
+          return rotateArray[i + 1]
+        }
+      }
+      return rotateArray[0]
+    }
+  </script>
+</body>
+
+</html>

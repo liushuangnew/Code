@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h5>操作给定的二叉树，将其变换为源二叉树的镜像。</h5>
+  <h5>写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号</h5>
+  <script>
+    function Mirror(root) {
+      if (!!root) {
+        let tmp = root.left
+        root.left = root.right
+        root.right = tmp
+        Mirror(root.left)
+        Mirror(root.right)
+      }
+    }
+
+    function Add(num1, num2) {
+      let res = 0
+      let carry = 0
+      do {
+        res = num1 ^ num2
+        carry = (num1 & num2) << 1
+        num1 = res
+        num2 = carry
+        console.log(res,carry)
+      } while (carry != 0)
+      return res
+    }
+    Add(3, 1)
+  </script>
+</body>
+
+</html>
